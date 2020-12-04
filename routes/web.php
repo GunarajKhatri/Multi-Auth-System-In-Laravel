@@ -32,6 +32,6 @@ Route::get('/admin/reset-password/{token}',[App\Http\Controllers\ResetPasswordCo
 Route::post('/admin/reset-password',[App\Http\Controllers\ResetPasswordController::class, 'reset'])->name('password.update');
 Route::post('/admin/email/verification/resend',[App\Http\Controllers\EmailVerifyController::class, 'resend'])->name('verification.resend');
 Route::get('/admin/email/verify',[App\Http\Controllers\AdminController::class,'show'])->name('verification.notice');
-Route::get('/admin/email/{id}/{hash}',[App\Http\Controllers\EmailVerifyController::class,'verify'])->name('verification.verify');
-
+Route::get('/admin/email/{id}/{hash}',[App\Http\Controllers\EmailVerifyController::class,'verify'])->name('Adminverification.verify');
+Auth::routes(['verify' => true]);
 

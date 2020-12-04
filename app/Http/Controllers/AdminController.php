@@ -6,8 +6,10 @@ use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Auth\Events\Adminregistered;
+
 class AdminController extends Controller
 {   
     public function __construct()
@@ -39,7 +41,7 @@ class AdminController extends Controller
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
         ]);
-        event(new Registered($admin));
+        event(new Adminregistered($admin));
         return redirect('/admin/login');
     }
     public function Login(Request $request){
@@ -57,7 +59,6 @@ class AdminController extends Controller
         }
 
         }
-       
         else{
             return redirect()->back();
         }
